@@ -35,10 +35,10 @@ interface Package {
   quantity: string;
   pieceType: string;
   description: string;
-  length: string;
-  width: string;
-  height: string;
   weight: string;
+  length?: string;
+  width?: string;
+  height?: string;
 }
 
 interface ShipmentHistory {
