@@ -255,7 +255,7 @@ function TrackContent() {
                       >
                         <IconComponent className={`text-lg md:text-xl ${isFirst ? 'text-white' : ''}`} style={{ color: isFirst ? 'white' : color }} />
                       </div>
-                      <div className={`p-3 md:p-4 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-gray-50'} ${isFirst ? 'ring-2 ring-offset-2' : ''}`} style={isFirst ? { ringColor: color } : {}}>
+                      <div className={`p-3 md:p-4 rounded-lg ${isDarkMode ? 'bg-slate-700' : 'bg-gray-50'}`}>
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
                           <span className="font-bold text-base md:text-lg" style={{ color }}>{formatStatus(history.status)}</span>
                           <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">{history.date} at {history.time}</span>
