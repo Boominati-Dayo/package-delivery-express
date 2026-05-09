@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { FaHome, FaSearch, FaCompass, FaArrowRight, FaBox, FaMap, FaTruck, FaPackage } from 'react-icons/fa';
+import { FaHome, FaSearch, FaCompass, FaArrowRight, FaBox, FaMap, FaTruck } from 'react-icons/fa';
 
 export default function NotFound() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -95,7 +95,7 @@ export default function NotFound() {
             >
               <FaSearch className="text-2xl" />
               <span className="text-lg">Track a Package</span>
-              <FaPackage className="group-hover:translate-x-2 transition-transform text-xl" />
+              <FaBox className="group-hover:translate-x-2 transition-transform text-xl" />
             </Link>
           </div>
 
