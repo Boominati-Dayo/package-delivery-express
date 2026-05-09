@@ -83,6 +83,30 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+            <div className="lg:hidden mt-8 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                <h3 className="text-white text-lg font-bold mb-4">Quick Tracking</h3>
+                <form onSubmit={handleQuickTrack} className="space-y-4">
+                  <input
+                    type="text"
+                    value={trackingNumber}
+                    onChange={(e) => setTrackingNumber(e.target.value)}
+                    placeholder="Enter tracking number"
+                    className="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#22c55e]"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isTracking}
+                    className="w-full py-3 bg-[#22c55e] text-[#14532d] font-bold rounded-lg hover:bg-[#16a34a] transition-all flex items-center justify-center gap-2"
+                  >
+                    {isTracking ? <FaSpinner className="animate-spin" /> : <FaSearch />}
+                    {isTracking ? 'Tracking...' : 'Track Now'}
+                  </button>
+                </form>
+                <p className="text-gray-300 text-sm mt-4 text-center">
+                  Or call us: <span className="text-[#22c55e] font-bold">+1 (555) 123-4567</span>
+                </p>
+              </div>
+            </div>
             <div className="hidden lg:block">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 transform skew-x-[-2deg]">
                 <h3 className="text-white text-xl font-bold mb-6">Quick Tracking</h3>
