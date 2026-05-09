@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin routes
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://globaltracklogistics.com/sitemap.xml
+
+# Crawl-delay (optional, be kind to the server)
+Crawl-delay: 1
