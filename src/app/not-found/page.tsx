@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaHome, FaSearch, FaCompass, FaArrowRight, FaPackage, FaMap } from 'react-icons/fa';
+import { FaHome, FaSearch, FaCompass, FaArrowRight, FaBox, FaMap } from 'react-icons/fa';
 
 export default function NotFound() {
   const [hoverDirection, setHoverDirection] = useState<'left' | 'right'>('right');
@@ -26,7 +26,7 @@ export default function NotFound() {
               animationDuration: `${3 + i * 0.5}s`
             }}
           >
-            <FaPackage size={40 + i * 5} />
+            <FaBox size={40 + i * 5} />
           </div>
         ))}
       </div>

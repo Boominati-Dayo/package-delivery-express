@@ -27,7 +27,6 @@ export default function Login() {
 
     try {
       setIsLoading(true);
-      setError('');
 
       const response = await fetch('/api/auth/login', {
         method: 'POST',
