@@ -313,26 +313,26 @@ export default function Admin() {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden md:block bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="hidden md:block bg-gray-900 rounded-xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-gray-900/50">
+              <thead className="bg-gray-800">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Tracking #</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Shipper</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Receiver</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Route</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Status</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Actions</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Tracking #</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Shipper</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Receiver</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Route</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Status</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+              <tbody className="divide-y divide-gray-700">
                 {filteredTrackings.map((tracking) => (
-                  <tr key={tracking._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                    <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-[#14532d] dark:text-[#22c55e]">{tracking.trackingNumber}</td>
-                    <td className="px-4 py-4 text-sm"><p className="text-gray-900 dark:text-gray-100 font-medium">{tracking.shipperName}</p><p className="text-gray-500 text-xs">{tracking.shipperEmail}</p></td>
-                    <td className="px-4 py-4 text-sm"><p className="text-gray-900 dark:text-gray-100 font-medium">{tracking.receiverName}</p><p className="text-gray-500 text-xs">{tracking.receiverEmail}</p></td>
-                    <td className="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">{tracking.origin} → {tracking.destination}</td>
+                  <tr key={tracking._id} className="hover:bg-gray-800/50">
+                    <td className="px-4 py-4 whitespace-nowrap text-sm font-bold text-[#22c55e]">{tracking.trackingNumber}</td>
+                    <td className="px-4 py-4 text-sm"><p className="text-gray-100 font-medium">{tracking.shipperName}</p><p className="text-gray-400 text-xs">{tracking.shipperEmail}</p></td>
+                    <td className="px-4 py-4 text-sm"><p className="text-gray-100 font-medium">{tracking.receiverName}</p><p className="text-gray-400 text-xs">{tracking.receiverEmail}</p></td>
+                    <td className="px-4 py-4 text-sm text-gray-300">{tracking.origin} → {tracking.destination}</td>
                     <td className="px-4 py-4 whitespace-nowrap"><span className={`px-2.5 py-1 text-xs font-medium rounded-full ${getStatusBg(tracking.status)}`}>{tracking.status}</span></td>
                     <td className="px-4 py-4 text-sm">
                       <div className="flex flex-wrap gap-1">
