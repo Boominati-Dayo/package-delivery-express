@@ -80,7 +80,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Our Office</h3>
-                  <p className="text-gray-600 dark:text-gray-400">123 Logistics Avenue, Suite 500<br />New York, NY 10001</p>
+                  <p className="text-gray-600 dark:text-gray-400">Allentown, PA<br />United States</p>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Phone</h3>
-                  <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567<br />+1 (555) 987-6543</p>
+                  <p className="text-gray-600 dark:text-gray-400">+1(484)223-7024</p>
                 </div>
               </div>
 
@@ -100,7 +100,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-400">info@globaltracklogistics.com<br />support@globaltracklogistics.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">info@pdex.com<br />support@pdex.com</p>
                 </div>
               </div>
 
@@ -281,7 +281,7 @@ export default function Contact() {
             <div className="text-center">
               <FaMapMarkerAlt className="text-5xl text-[#14532d] dark:text-[#22c55e] mx-auto mb-4" />
               <p className="text-gray-600 dark:text-gray-400">Interactive Map</p>
-              <p className="text-sm text-gray-500 dark:text-gray-500">123 Logistics Avenue, New York, NY</p>
+              <p className="text-sm text-gray-500 dark:text-gray-500">Allentown, PA</p>
             </div>
           </div>
         </div>

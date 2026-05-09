@@ -68,13 +68,13 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-[#22c55e] mt-1" />
                 <span className="text-gray-300">
-                  Pennsylvania, USA<br />
+                  Allentown, PA<br />
                   Serving all 50 states and international destinations
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-[#22c55e]" />
-                <a href="tel:+15551234567" className="text-gray-300 hover:text-[#22c55e] transition-colors">+1 (555) 123-4567</a>
+                <a href="tel:+14842237024" className="text-gray-300 hover:text-[#22c55e] transition-colors">+1(484)223-7024</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#22c55e]" />

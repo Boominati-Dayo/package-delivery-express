@@ -201,9 +201,9 @@ export default function Terms() {
               If you have any questions about these Terms, please contact us at:
             </p>
             <p className="text-gray-900 dark:text-white font-medium mt-2">
-              Email: legal@globaltracklogistics.com<br />
-              Address: 123 Logistics Avenue, Suite 500, New York, NY 10001<br />
-              Phone: +1 (555) 123-4567
+              Email: legal@pdex.com<br />
+              Address: Allentown, PA<br />
+              Phone: +1(484)223-7024
             </p>
           </section>
         </div>
