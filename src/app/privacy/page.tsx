@@ -135,7 +135,7 @@ export default function Privacy() {
               If you have any questions about this Privacy Policy or our data practices, please contact our Data Protection Officer at:
             </p>
             <p className="text-gray-900 dark:text-white font-medium mt-2">
-              Email: privacy@pdex.com<br />
+              Email: admin@packagedeliveryexpress.com<br />
               Address: Allentown, PA<br />
               Phone: +1(484)223-7024
             </p>

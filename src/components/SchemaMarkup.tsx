@@ -15,9 +15,9 @@ export default function SchemaMarkup() {
         'areaServed': 'Worldwide',
         'contactPoint': {
           '@type': 'ContactPoint',
-          'telephone': '+1-555-123-4567',
+          'telephone': '+1-484-223-7024',
           'contactType': 'customer service',
-          'email': 'info@pdex.com',
+          'email': 'admin@packagedeliveryexpress.com',
           'availableLanguage': 'English'
         }
       },

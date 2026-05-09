@@ -201,7 +201,7 @@ export default function Terms() {
               If you have any questions about these Terms, please contact us at:
             </p>
             <p className="text-gray-900 dark:text-white font-medium mt-2">
-              Email: legal@pdex.com<br />
+              Email: admin@packagedeliveryexpress.com<br />
               Address: Allentown, PA<br />
               Phone: +1(484)223-7024
             </p>

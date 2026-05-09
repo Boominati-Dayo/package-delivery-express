@@ -78,7 +78,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#22c55e]" />
-                <a href="mailto:info@pdex.com" className="text-gray-300 hover:text-[#22c55e] transition-colors">info@pdex.com</a>
+                <a href="mailto:admin@packagedeliveryexpress.com" className="text-gray-300 hover:text-[#22c55e] transition-colors">admin@packagedeliveryexpress.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaClock className="text-[#22c55e]" />
