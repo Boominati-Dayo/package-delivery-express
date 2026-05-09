@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header>
+    <header className="sticky top-0 z-50">
       {/* Top Bar - PDEX */}
       <div className="bg-[#14532d] dark:bg-gray-900 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +47,7 @@ export default function Navbar() {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-md`}>
+      <nav className={`${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-md sticky top-0 z-50`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <Logo />
