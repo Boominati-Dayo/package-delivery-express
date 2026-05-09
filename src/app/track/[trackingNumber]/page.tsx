@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { useTheme } from '@/components/ClientLayout';
 import TrackingMap from '@/components/TrackingMap';
 import { getStatusBg, getStatusText, formatStatus } from '@/lib/statusUtils';
