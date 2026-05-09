@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -82,7 +83,9 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#14532d" />
         <meta name="color-scheme" content="light dark" />
-        <script type="text/javascript">
+      </head>
+      <body className="antialiased">
+        <Script id="smartsupp">{`
           var _smartsupp = _smartsupp || {};
           _smartsupp.key = 'f25d3a11d9a511689f0174f752975e3dca87247e';
           window.smartsupp||(function(d) {
@@ -91,9 +94,7 @@ export default function RootLayout({
             c.type='text/javascript';c.charset='utf-8';c.async=true;
             c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
           })(document);
-        </script>
-      </head>
-      <body className="antialiased">
+        `}</Script>
         <SchemaMarkup />
         <ClientLayout>{children}</ClientLayout>
       </body>
