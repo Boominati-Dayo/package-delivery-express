@@ -3,7 +3,7 @@ import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://globaltracklogistics.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://packagedeliveryexpress.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -82,6 +82,16 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#14532d" />
         <meta name="color-scheme" content="light dark" />
+        <script type="text/javascript">
+          var _smartsupp = _smartsupp || {};
+          _smartsupp.key = 'f25d3a11d9a511689f0174f752975e3dca87247e';
+          window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+          })(document);
+        </script>
       </head>
       <body className="antialiased">
         <SchemaMarkup />

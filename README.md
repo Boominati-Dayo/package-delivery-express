@@ -34,7 +34,7 @@ A modern, full-featured logistics tracking website built with Next.js 14, MongoD
    SMTP_PORT=587
    SMTP_USER=your_email
    SMTP_PASS=your_app_password
-   NEXT_PUBLIC_SITE_URL=https://package-delivery-express.vercel.app
+   NEXT_PUBLIC_SITE_URL=https://packagedeliveryexpress.com
    ```
 
 3. Run development server:
