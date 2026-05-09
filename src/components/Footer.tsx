@@ -82,7 +82,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <FaClock className="text-[#22c55e]" />
-                <span className="text-gray-300">Mon-Fri: 8AM - 6PM EST</span>
+                <span className="text-gray-300">Mon-Sat: 8AM - 12AM EST</span>
               </div>
             </div>
           </div>
