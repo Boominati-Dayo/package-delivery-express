@@ -106,7 +106,6 @@ export default function Home() {
                   Or call us: <span className="text-[#22c55e] font-bold">+1 (555) 123-4567</span>
                 </p>
               </div>
-            </div>
             <div className="hidden lg:block">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 transform skew-x-[-2deg]">
                 <h3 className="text-white text-xl font-bold mb-6">Quick Tracking</h3>
