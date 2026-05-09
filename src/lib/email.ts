@@ -92,8 +92,8 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
             <td style="text-align: center;">
               <img src="https://pdex.com/PDEXLogo.png" alt="PDEX Logo" style="max-width: 100px; height: auto; margin-bottom: 10px; opacity: 0.7;" onerror="this.style.display='none'" />
               <p style="color: #14532d; margin: 0; font-weight: 600; font-size: 14px;">Package Delivery Express (PDEX)</p>
-              <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Pennsylvania, USA</p>
-              <p style="color: #666; font-size: 12px; margin: 5px 0;">Phone: +1 (555) 123-4567 | Email: info@pdex.com</p>
+              <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Allentown, PA, USA</p>
+              <p style="color: #666; font-size: 12px; margin: 5px 0;">Phone: +1(484)223-7024 | Email: info@pdex.com</p>
               <p style="color: #999; font-size: 11px; margin: 15px 0 0;">© 2024 Package Delivery Express (PDEX). All rights reserved.</p>
               ${footerContent || '<p style="color: #999; font-size: 11px; margin: 10px 0 0;">This is an automated message. Please do not reply to this email.</p>'}
             </td>
@@ -182,7 +182,7 @@ export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
     </table>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Need help? Contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1 (555) 123-4567.
+      Need help? Contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1(484)223-7024.
     </p>
   `);
 
@@ -481,7 +481,7 @@ export async function sendAdminMessage(data: {
     </table>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6; border-top: 1px solid #e0e0e0; padding-top: 20px;">
-      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1 (555) 123-4567.
+      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1(484)223-7024.
     </p>
   `, '');
 
