@@ -1,4 +1,4 @@
-# Global Track Logistics - Next.js Version
+# Package Delivery Express (PDEX) - Next.js Version
 
 A modern, full-featured logistics tracking website built with Next.js 14, MongoDB, and SMTP email.
 
@@ -34,7 +34,7 @@ A modern, full-featured logistics tracking website built with Next.js 14, MongoD
    SMTP_PORT=587
    SMTP_USER=your_email
    SMTP_PASS=your_app_password
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   NEXT_PUBLIC_SITE_URL=https://package-delivery-express.vercel.app
    ```
 
 3. Run development server:
@@ -59,9 +59,9 @@ A modern, full-featured logistics tracking website built with Next.js 14, MongoD
 
 ## Brand Colors
 
-- Primary: #351c15 (Dark Brown)
-- Secondary: #4a2a1f (Light Brown)
-- Accent: #ffbe03 (Gold)
+- Primary: #14532d (Dark Green)
+- Secondary: #166534 (Forest Green)
+- Accent: #22c55e (Bright Green)
 
 ## Powered By
 

@@ -48,8 +48,8 @@ export async function sendEmail(options: EmailOptions): Promise<void> {
 }
 
 const getTrackingURL = (trackingNumber: string) => {
-  const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  return `${baseURL}/track/${trackingNumber}`;
+  const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://package-delivery-express.vercel.app';
+  return `${baseURL}/track?tracking=${trackingNumber}`;
 };
 
 const getBaseTemplate = (content: string, footerContent?: string) => `
