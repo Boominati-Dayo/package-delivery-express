@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import User from '@/models/User';
-import { generateToken, hashPassword } from '@/lib/auth';
+import { generateToken } from '@/lib/auth';
+
+const ADMIN_EMAIL = 'admin@packagedeliveryexpress.com';
+const ADMIN_PASSWORD = 'Boomin@ti100$';
 
 export async function POST(request: NextRequest) {
   try {
-    await connectDB();
     const { email, password } = await request.json();
 
     if (!email || !password) {
@@ -15,55 +15,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if user exists
-    let user = await User.findOne({ email: email.toLowerCase() });
-
-    if (!user) {
-      // Create new user
-      const hashedPassword = hashPassword(password);
-      
-      // Check if this is the first user (make them admin)
-      const userCount = await User.countDocuments();
-      
-      user = new User({
-        email: email.toLowerCase(),
-        password: hashedPassword,
-        name: email.split('@')[0],
-        role: userCount === 0 ? 'admin' : 'user',
-        permissions: userCount === 0 ? ['all'] : []
+    if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase() && password === ADMIN_PASSWORD) {
+      const token = generateToken({
+        userId: 'admin-1',
+        email: ADMIN_EMAIL,
+        role: 'admin'
       });
 
-      await user.save();
-    } else {
-      // Verify password
-      if (user.password !== hashPassword(password)) {
-        return NextResponse.json(
-          { success: false, error: 'Invalid credentials' },
-          { status: 401 }
-        );
-      }
+      return NextResponse.json({
+        success: true,
+        data: {
+          token,
+          user: {
+            id: 'admin-1',
+            email: ADMIN_EMAIL,
+            name: 'Admin',
+            role: 'admin',
+            permissions: ['all']
+          }
+        }
+      });
     }
 
-    // Generate token
-    const token = generateToken({
-      userId: user._id.toString(),
-      email: user.email,
-      role: user.role
-    });
-
-    return NextResponse.json({
-      success: true,
-      data: {
-        token,
-        user: {
-          id: user._id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-          permissions: user.permissions
-        }
-      }
-    });
+    return NextResponse.json(
+      { success: false, error: 'Invalid credentials' },
+      { status: 401 }
+    );
   } catch (error) {
     console.error('Login error:', error);
     return NextResponse.json(
