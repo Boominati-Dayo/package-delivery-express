@@ -23,6 +23,7 @@ interface Tracking {
   status: string;
   expectedDeliveryDate: string;
   shipmentMode: string;
+  currentLocation: string;
   showLiveMap: boolean;
   createdAt: string;
 }
