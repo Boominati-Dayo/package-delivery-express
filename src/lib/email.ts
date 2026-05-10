@@ -68,7 +68,7 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td style="text-align: center;">
-              <img src="https://pdex.com/PDEXLogo.png" alt="PDEX Logo" style="max-width: 180px; height: auto; margin-bottom: 10px;" onerror="this.style.display='none'" />
+              <img src="https://packagedeliveryexpress.com/PDEXLogo.png" alt="PDEX Logo" style="max-width: 180px; height: auto; margin-bottom: 10px;" onerror="this.style.display='none'" />
               <h1 style="color: #22c55e; margin: 0; font-size: 22px; font-weight: 700;">Package Delivery Express</h1>
               <p style="color: rgba(255,255,255,0.9); margin: 5px 0 0; font-size: 12px;">Delivering Beyond Borders Since 2000</p>
             </td>
@@ -90,7 +90,7 @@ const getBaseTemplate = (content: string, footerContent?: string) => `
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td style="text-align: center;">
-              <img src="https://pdex.com/PDEXLogo.png" alt="PDEX Logo" style="max-width: 100px; height: auto; margin-bottom: 10px; opacity: 0.7;" onerror="this.style.display='none'" />
+              <img src="https://packagedeliveryexpress.com/PDEXLogo.png" alt="PDEX Logo" style="max-width: 100px; height: auto; margin-bottom: 10px; opacity: 0.7;" onerror="this.style.display='none'" />
               <p style="color: #14532d; margin: 0; font-weight: 600; font-size: 14px;">Package Delivery Express (PDEX)</p>
               <p style="color: #666; font-size: 12px; margin: 5px 0 0;">Allentown, PA, USA</p>
               <p style="color: #666; font-size: 12px; margin: 5px 0;">Phone: +1(484)223-7024 | Email: admin@packagedeliveryexpress.com</p>
@@ -182,7 +182,7 @@ export async function sendShipperEmail(data: TrackingEmailData): Promise<void> {
     </table>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Need help? Contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1(484)223-7024.
+      Need help? Contact our support team at <a href="mailto:admin@packagedeliveryexpress.com" style="color: #22c55e;">admin@packagedeliveryexpress.com</a> or call +1(484)223-7024.
     </p>
   `);
 
@@ -260,7 +260,7 @@ export async function sendReceiverEmail(data: TrackingEmailData): Promise<void> 
     </table>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6;">
-      Questions about your delivery? Contact us at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a>.
+      Questions about your delivery? Contact us at <a href="mailto:admin@packagedeliveryexpress.com" style="color: #22c55e;">admin@packagedeliveryexpress.com</a>.
     </p>
   `);
 
@@ -481,7 +481,7 @@ export async function sendAdminMessage(data: {
     </table>
     
     <p style="color: #666; font-size: 13px; line-height: 1.6; border-top: 1px solid #e0e0e0; padding-top: 20px;">
-      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:support@packagedeliveryexpress.com" style="color: #22c55e;">support@packagedeliveryexpress.com</a> or call +1(484)223-7024.
+      If you have any questions, please don't hesitate to contact our support team at <a href="mailto:admin@packagedeliveryexpress.com" style="color: #22c55e;">admin@packagedeliveryexpress.com</a> or call +1(484)223-7024.
     </p>
   `, '');
 

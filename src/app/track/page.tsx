@@ -219,14 +219,14 @@ function TrackContent() {
             <div className="grid grid-cols-3 gap-3 mt-4">
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 text-center">
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">From</p>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm truncate">{shipment.origin}</p>
+                <p className="font-semibold text-gray-900 dark:text-white text-sm break-words leading-tight">{shipment.origin}</p>
               </div>
               <div className="flex items-center justify-center">
                 <FaArrowRight className="text-[#22c55e] text-xl" />
               </div>
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 text-center">
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">To</p>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm truncate">{shipment.destination}</p>
+                <p className="font-semibold text-gray-900 dark:text-white text-sm break-words leading-tight">{shipment.destination}</p>
               </div>
             </div>
           </div>

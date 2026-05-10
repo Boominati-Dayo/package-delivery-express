@@ -44,6 +44,7 @@ export default function Admin() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [updateData, setUpdateData] = useState({ status: '', currentLocation: '', remarks: '' });
+  const [togglingMap, setTogglingMap] = useState<string | null>(null);
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -70,6 +71,20 @@ export default function Admin() {
     const updated = [...packages];
     updated[index] = { ...updated[index], [field]: value };
     setPackages(updated);
+  };
+
+  const toggleLiveMap = async (trackingNumber: string, currentValue: boolean) => {
+    setTogglingMap(trackingNumber);
+    try {
+      const token = localStorage.getItem('token');
+      await fetch(`/api/trackings/${trackingNumber}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ showLiveMap: !currentValue }),
+      });
+      fetchTrackings();
+    } catch (error) { console.error('Failed to toggle live map:', error); }
+    finally { setTogglingMap(null); }
   };
 
   useEffect(() => {
@@ -307,6 +322,10 @@ export default function Admin() {
                 <button onClick={() => openMessageModal(tracking, 'receiver')} className="flex-1 min-w-[80px] px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-200 flex items-center justify-center gap-1"><FaEnvelope size={12} /> Msg</button>
                 <Link href={`/track?tracking=${tracking.trackingNumber}`} className="flex-1 min-w-[80px] px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center gap-1"><FaGlobe size={12} /> View</Link>
                 <button onClick={() => handleDelete(tracking.trackingNumber)} className="px-3 py-2 bg-red-100 text-red-700 rounded-lg text-xs font-medium hover:bg-red-200 flex items-center justify-center"><FaTrash size={12} /></button>
+                <button onClick={() => toggleLiveMap(tracking.trackingNumber, tracking.showLiveMap)} disabled={togglingMap === tracking.trackingNumber} className="flex-1 min-w-[80px] px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-center gap-1 bg-orange-100 text-orange-700 hover:bg-orange-200 disabled:opacity-50">
+                  {togglingMap === tracking.trackingNumber ? <FaSpinner className="animate-spin" size={12} /> : <FaMapMarkerAlt size={12} />}
+                  {tracking.showLiveMap ? 'Map On' : 'Map Off'}
+                </button>
               </div>
             </div>
           ))}
@@ -323,6 +342,7 @@ export default function Admin() {
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Receiver</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Route</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Status</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Map</th>
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase">Actions</th>
                 </tr>
               </thead>
@@ -334,6 +354,12 @@ export default function Admin() {
                     <td className="px-4 py-4 text-sm"><p className="text-gray-100 font-medium">{tracking.receiverName}</p><p className="text-gray-400 text-xs">{tracking.receiverEmail}</p></td>
                     <td className="px-4 py-4 text-sm text-gray-300">{tracking.origin} → {tracking.destination}</td>
                     <td className="px-4 py-4 whitespace-nowrap"><span className={`px-2.5 py-1 text-xs font-medium rounded-full ${getStatusBg(tracking.status)}`}>{tracking.status}</span></td>
+                    <td className="px-4 py-4 whitespace-nowrap">
+                      <button onClick={() => toggleLiveMap(tracking.trackingNumber, tracking.showLiveMap)} disabled={togglingMap === tracking.trackingNumber} className={`px-2 py-1 text-xs font-medium rounded-full flex items-center gap-1 ${tracking.showLiveMap ? 'bg-green-600 text-white' : 'bg-gray-600 text-white'} hover:opacity-80 disabled:opacity-50`}>
+                        {togglingMap === tracking.trackingNumber ? <FaSpinner className="animate-spin" size={10} /> : <FaMapMarkerAlt size={10} />}
+                        {tracking.showLiveMap ? 'On' : 'Off'}
+                      </button>
+                    </td>
                     <td className="px-4 py-4 text-sm">
                       <div className="flex flex-wrap gap-1">
                         <button onClick={() => openUpdateModal(tracking)} className="text-green-600 hover:text-green-800 text-xs flex items-center gap-1 px-2 py-1 bg-green-50 rounded"><FaEdit size={12} /> Update</button>
