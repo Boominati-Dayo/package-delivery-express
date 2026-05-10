@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -25,7 +25,7 @@ const currentIcon = L.divIcon({
   iconAnchor: [40, 13]
 });
 
-const defaultCenter: [number, number] = [40.7128, -74.0060];
+const defaultCenter: [number, number] = [40.4406, -79.9959];
 
 const locations: Record<string, [number, number]> = {
   'new york': [40.7128, -74.0060],
@@ -52,6 +52,31 @@ const locations: Record<string, [number, number]> = {
   'memphis': [35.1495, -90.0490],
   'portland': [45.5152, -122.6784],
   'las vegas': [36.1699, -115.1398],
+  'pittsburgh': [40.4406, -79.9959],
+  'allentown': [40.6084, -75.4902],
+  'fairless hills': [40.1818, -74.8557],
+  'bucks county': [40.2875, -75.0405],
+  'lancaster': [40.0379, -76.3056],
+  'reading': [40.3356, -75.9274],
+  'bethlehem': [40.6284, -75.3674],
+  'easton': [40.7420, -75.1066],
+  'scranton': [41.4087, -75.6624],
+  'harrisburg': [40.2732, -76.8867],
+  'york': [39.9626, -76.7276],
+  ' Wilkes-Barre': [41.2459, -75.8813],
+  'levittown': [40.1551, -74.8285],
+  'trevose': [40.1229, -74.9835],
+  'feasterville': [40.1434, -74.9796],
+  'langhorne': [40.1740, -74.9224],
+  'morrisville': [40.2159, -74.7785],
+  'warminster': [40.1779, -75.0734],
+  'doylestown': [40.3101, -75.1288],
+  'perkasie': [40.3718, -75.2924],
+  'quakertown': [40.4418, -75.3416],
+  'bensalem': [40.1001, -74.9342],
+  'phila': [39.9526, -75.1652],
+  'philadelphia pa': [39.9526, -75.1652],
+  'pittsburgh pa': [40.4406, -79.9959],
   'london': [51.5074, -0.1278],
   'paris': [48.8566, 2.3522],
   'berlin': [52.5200, 13.4050],
@@ -74,16 +99,64 @@ const locations: Record<string, [number, number]> = {
   'chicago rockford international': [42.2536, -89.0972],
   'damas': [33.5138, 36.2765],
   'entre terre rouge': [-20.1609, 57.4989],
+  'kingston': [17.9714, -76.7936],
+  'nassau': [25.0343, -77.3963],
+  'port au prince': [18.5944, -72.3074],
+  'santo domingo': [18.4861, -69.9312],
+  'georgetown': [6.8013, -58.1551],
+  'san juan': [18.4655, -66.1057],
+  'havana': [23.1136, -82.3666],
 };
 
-function getCoordinates(location: string): [number, number] {
+function extractCityFromAddress(address: string): string {
+  const cleaned = address.toLowerCase().replace(/united states|usa|us$/g, '').trim();
+  const parts = cleaned.split(',').map(p => p.trim());
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const part = parts[i].replace(/^\d+.*?\s/, '');
+    if (part.length > 2 && !/^\d{5}/.test(part) && !/^pa$|^ny$|^ca$/i.test(part)) {
+      return part;
+    }
+  }
+  return parts[0] || cleaned;
+}
+
+function findBestMatch(location: string): [number, number] {
   const loc = location.toLowerCase();
+  
   for (const [key, coords] of Object.entries(locations)) {
-    if (loc.includes(key) || key.includes(loc.split(',')[0].trim())) {
+    if (loc.includes(key) || key.includes(loc) || loc.split(',')[0].trim() === key) {
       return coords;
     }
   }
+  
+  const cityName = extractCityFromAddress(location);
+  for (const [key, coords] of Object.entries(locations)) {
+    if (cityName.includes(key) || key.includes(cityName)) {
+      return coords;
+    }
+  }
+  
   return defaultCenter;
+}
+
+interface GeocodingResult {
+  lat: number;
+  lng: number;
+}
+
+async function geocodeAddress(address: string): Promise<GeocodingResult | null> {
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`
+    );
+    const data = await response.json();
+    if (data && data[0]) {
+      return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+    }
+  } catch (error) {
+    console.error('Geocoding failed:', error);
+  }
+  return null;
 }
 
 interface MapComponentProps {
@@ -95,42 +168,80 @@ interface MapComponentProps {
 export default function MapComponent({ origin, destination, currentLocation }: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const markersRef = useRef<L.Marker[]>([]);
 
   useEffect(() => {
-    if (!mapRef.current || mapInstanceRef.current) return;
+    if (!mapRef.current) return;
 
-    const originCoords = getCoordinates(origin);
-    const destCoords = getCoordinates(destination);
-    const currentCoords = currentLocation ? getCoordinates(currentLocation) : null;
+    const initMap = async () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+      
+      setLoading(true);
+      setError(null);
+      
+      let originCoords = findBestMatch(origin);
+      let destCoords = findBestMatch(destination);
+      let currentCoords = currentLocation ? findBestMatch(currentLocation) : null;
+      
+      const geocoded = await Promise.all([
+        !locations[origin.toLowerCase()] ? geocodeAddress(origin) : null,
+        !locations[destination.toLowerCase()] ? geocodeAddress(destination) : null,
+        currentLocation && !locations[currentLocation.toLowerCase()] ? geocodeAddress(currentLocation) : null
+      ]);
+      
+      if (geocoded[0]) originCoords = [geocoded[0].lat, geocoded[0].lng];
+      if (geocoded[1]) destCoords = [geocoded[1].lat, geocoded[1].lng];
+      if (geocoded[2]) currentCoords = [geocoded[2].lat, geocoded[2].lng];
+      
+      const map = L.map(mapRef.current).setView(currentCoords || originCoords, 10);
+      mapInstanceRef.current = map;
 
-    const map = L.map(mapRef.current).setView(currentCoords || originCoords, 5);
-    mapInstanceRef.current = map;
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 18,
+      }).addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 18,
-    }).addTo(map);
+      const originMarker = L.marker(originCoords, { icon: originIcon }).addTo(map).bindPopup(`<b>Origin:</b><br>${origin}`);
+      const destMarker = L.marker(destCoords, { icon: destIcon }).addTo(map).bindPopup(`<b>Destination:</b><br>${destination}`);
+      
+      markersRef.current = [originMarker, destMarker];
 
-    L.marker(originCoords, { icon: originIcon }).addTo(map).bindPopup(`<b>Origin:</b> ${origin}`);
-    L.marker(destCoords, { icon: destIcon }).addTo(map).bindPopup(`<b>Destination:</b> ${destination}`);
+      if (currentCoords) {
+        const currentMarker = L.marker(currentCoords, { icon: currentIcon }).addTo(map).bindPopup(`<b>Current Location:</b><br>${currentLocation}`);
+        markersRef.current.push(currentMarker);
+        
+        const latlngs: L.LatLngExpression[] = [originCoords, currentCoords, destCoords];
+        L.polyline(latlngs, {
+          color: '#22c55e',
+          weight: 4,
+          opacity: 0.8,
+          dashArray: '10, 10',
+        }).addTo(map);
+        
+        const bounds = L.latLngBounds(latlngs as [number, number][]);
+        map.fitBounds(bounds, { padding: [50, 50] });
+      } else {
+        const latlngs: L.LatLngExpression[] = [originCoords, destCoords];
+        L.polyline(latlngs, {
+          color: '#22c55e',
+          weight: 4,
+          opacity: 0.8,
+          dashArray: '10, 10',
+        }).addTo(map);
+        
+        const bounds = L.latLngBounds(latlngs as [number, number][]);
+        map.fitBounds(bounds, { padding: [50, 50] });
+      }
 
-    if (currentCoords) {
-      L.marker(currentCoords, { icon: currentIcon }).addTo(map).bindPopup(`<b>Current Location:</b> ${currentLocation}`);
-    }
+      setLoading(false);
+    };
 
-    const latlngs: L.LatLngExpression[] = [originCoords];
-    if (currentCoords) latlngs.push(currentCoords);
-    latlngs.push(destCoords);
-
-    L.polyline(latlngs, {
-      color: '#22c55e',
-      weight: 4,
-      opacity: 0.8,
-      dashArray: '10, 10',
-    }).addTo(map);
-
-    const bounds = L.latLngBounds(latlngs as [number, number][]);
-    map.fitBounds(bounds, { padding: [50, 50] });
+    initMap();
 
     return () => {
       if (mapInstanceRef.current) {
@@ -149,7 +260,17 @@ export default function MapComponent({ origin, destination, currentLocation }: M
           50% { opacity: 0.6; }
         }
       `}</style>
-      <div ref={mapRef} className="w-full h-80 md:h-96 rounded-xl z-0" />
+      <div className="relative w-full h-80 md:h-96 rounded-xl z-0">
+        {loading && (
+          <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center z-10">
+            <div className="text-center">
+              <div className="animate-spin w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full mx-auto mb-2"></div>
+              <p className="text-sm text-gray-500">Loading map...</p>
+            </div>
+          </div>
+        )}
+        <div ref={mapRef} className="w-full h-full rounded-xl" />
+      </div>
     </>
   );
 }
