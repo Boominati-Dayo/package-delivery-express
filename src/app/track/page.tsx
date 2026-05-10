@@ -326,18 +326,18 @@ function TrackContent() {
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <FaUser className="text-[#22c55e] mt-1 flex-shrink-0" />
-                  <div className="min-w-0">
+                  <div className="min-w-0 break-words">
                     <p className="font-medium text-gray-900 dark:text-white">{shipment.shipperName}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{shipment.shipperAddress}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 break-words">{shipment.shipperAddress}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaPhone className="text-[#22c55e] flex-shrink-0" />
-                  <span className="text-gray-900 dark:text-white text-sm">{shipment.shipperPhone}</span>
+                  <span className="text-gray-900 dark:text-white text-sm break-all">{shipment.shipperPhone}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaEnvelope className="text-[#22c55e] flex-shrink-0" />
-                  <span className="text-gray-900 dark:text-white text-sm truncate">{shipment.shipperEmail}</span>
+                  <span className="text-gray-900 dark:text-white text-sm break-all">{shipment.shipperEmail}</span>
                 </div>
               </div>
             </div>
@@ -350,18 +350,18 @@ function TrackContent() {
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <FaUser className="text-[#22c55e] mt-1 flex-shrink-0" />
-                  <div className="min-w-0">
+                  <div className="min-w-0 break-words">
                     <p className="font-medium text-gray-900 dark:text-white">{shipment.receiverName}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{shipment.receiverAddress}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 break-words">{shipment.receiverAddress}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaPhone className="text-[#22c55e] flex-shrink-0" />
-                  <span className="text-gray-900 dark:text-white text-sm">{shipment.receiverPhone}</span>
+                  <span className="text-gray-900 dark:text-white text-sm break-all">{shipment.receiverPhone}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaEnvelope className="text-[#22c55e] flex-shrink-0" />
-                  <span className="text-gray-900 dark:text-white text-sm truncate">{shipment.receiverEmail}</span>
+                  <span className="text-gray-900 dark:text-white text-sm break-all">{shipment.receiverEmail}</span>
                 </div>
               </div>
             </div>
