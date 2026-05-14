@@ -15,7 +15,7 @@ export default function SchemaMarkup() {
         'areaServed': 'Worldwide',
         'contactPoint': {
           '@type': 'ContactPoint',
-          'telephone': '+1-484-223-7024',
+          'telephone': '+1-267-223-9811',
           'contactType': 'customer service',
           'email': 'admin@packagedeliveryexpress.com',
           'availableLanguage': 'English'
