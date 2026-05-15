@@ -103,7 +103,7 @@ export default function Home() {
                   </button>
                 </form>
                 <p className="text-gray-300 text-sm mt-4 text-center">
-                  Or call us: <span className="text-[#22c55e] font-bold">+1(484)223-7024</span>
+                  Or call us: <span className="text-[#22c55e] font-bold">+1(267)223-9811</span>
                 </p>
               </div>
             <div className="hidden lg:block">
@@ -127,7 +127,7 @@ export default function Home() {
                   </button>
                 </form>
                 <p className="text-gray-300 text-sm mt-4 text-center">
-                  Or call us: <span className="text-[#22c55e] font-bold">+1(484)223-7024</span>
+                  Or call us: <span className="text-[#22c55e] font-bold">+1(267)223-9811</span>
                 </p>
               </div>
             </div>
