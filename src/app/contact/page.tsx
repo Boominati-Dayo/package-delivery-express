@@ -273,19 +273,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      {/* Map Placeholder */}
-      <section className="bg-white dark:bg-gray-800 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gray-200 dark:bg-gray-700 rounded-2xl h-80 flex items-center justify-center">
-            <div className="text-center">
-              <FaMapMarkerAlt className="text-5xl text-[#14532d] dark:text-[#22c55e] mx-auto mb-4" />
-              <p className="text-gray-600 dark:text-gray-400">Interactive Map</p>
-              <p className="text-sm text-gray-500 dark:text-gray-500">Allentown, PA</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
