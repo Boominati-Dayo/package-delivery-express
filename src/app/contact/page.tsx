@@ -86,16 +86,6 @@ export default function Contact() {
 
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-[#22c55e]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <FaPhone className="text-xl text-[#14532d] dark:text-[#22c55e]" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Phone</h3>
-                  <p className="text-gray-600 dark:text-gray-400">+1(267)223-9811</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#22c55e]/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <FaEnvelope className="text-xl text-[#14532d] dark:text-[#22c55e]" />
                 </div>
                 <div>

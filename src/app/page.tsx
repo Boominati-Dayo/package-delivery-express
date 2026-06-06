@@ -102,9 +102,6 @@ export default function Home() {
                     {isTracking ? 'Tracking...' : 'Track Now'}
                   </button>
                 </form>
-                <p className="text-gray-300 text-sm mt-4 text-center">
-                  Or call us: <span className="text-[#22c55e] font-bold">+1(267)223-9811</span>
-                </p>
               </div>
             <div className="hidden lg:block">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 transform skew-x-[-2deg]">
@@ -126,9 +123,6 @@ export default function Home() {
                     {isTracking ? 'Tracking...' : 'Track Now'}
                   </button>
                 </form>
-                <p className="text-gray-300 text-sm mt-4 text-center">
-                  Or call us: <span className="text-[#22c55e] font-bold">+1(267)223-9811</span>
-                </p>
               </div>
             </div>
           </div>

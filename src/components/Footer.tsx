@@ -73,10 +73,6 @@ export default function Footer() {
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <FaPhone className="text-[#22c55e]" />
-                <a href="tel:+12672239811" className="text-gray-300 hover:text-[#22c55e] transition-colors">+1(267)223-9811</a>
-              </div>
-              <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-[#22c55e]" />
                 <a href="mailto:admin@packagedeliveryexpress.com" className="text-gray-300 hover:text-[#22c55e] transition-colors">admin@packagedeliveryexpress.com</a>
               </div>

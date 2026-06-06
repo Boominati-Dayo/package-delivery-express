@@ -137,7 +137,6 @@ export default function Privacy() {
             <p className="text-gray-900 dark:text-white font-medium mt-2">
               Email: admin@packagedeliveryexpress.com<br />
               Address: Allentown, PA<br />
-              Phone: +1(267)223-9811
             </p>
           </section>
 
