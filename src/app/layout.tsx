@@ -4,7 +4,7 @@ import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://packagedeliveryexpress.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://package-delivery-xpress.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

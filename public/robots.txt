@@ -6,7 +6,7 @@ Allow: /
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://packagedeliveryexpress.com/sitemap.xml
+Sitemap: https://package-delivery-xpress.vercel.app/sitemap.xml
 
 # Crawl-delay (optional, be kind to the server)
 Crawl-delay: 1

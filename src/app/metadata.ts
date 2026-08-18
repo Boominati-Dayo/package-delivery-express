@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://packagedeliveryexpress.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://package-delivery-xpress.vercel.app';
 
 export const homeMetadata: Metadata = {
   title: 'Package Delivery Express (PDEX) - Fast & Reliable Shipping Solutions',
